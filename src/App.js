@@ -1,18 +1,71 @@
-// ... (Previous code)
-
+import React from 'react';
+import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom'; // Updated import statement
+import LureList from './components/LureList';
+import LineList from './components/LineList';
+import SinkerList from './components/SinkerList';
+import LureForm from './components/LureForm';
+import LineForm from './components/LineForm';
+import SinkerForm from './components/SinkerForm';
 import EditLureForm from './components/EditLureForm';
+import EditLineForm from './components/EditLineForm';
+import EditSinkerForm from './components/EditSinkerForm';
+import SignUp from './components/SignUp';
+import SignIn from './components/SignIn';
+
+const NotFound = () => {
+  return <h2>404 Not Found</h2>;
+};
 
 const App = () => {
   return (
     <Router>
       <div>
         <h1>Fishing App</h1>
-        <Link to="/lures">Lure List</Link>
-        <Switch>
-          <Route exact path="/lures" component={LureList} />
-          <Route exact path="/lures/add" component={LureForm} />
-          <Route exact path="/lures/:id/edit" component={EditLureForm} />
-        </Switch>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/lures">Lures</Link>
+            </li>
+            <li>
+              <Link to="/lines">Lines</Link>
+            </li>
+            <li>
+              <Link to="/sinkers">Sinkers</Link>
+            </li>
+            <li>
+              <Link to="/signup">Sign Up</Link>
+            </li>
+            <li>
+              <Link to="/signin">Sign In</Link>
+            </li>
+          </ul>
+        </nav>
+        <Routes> {/* Updated to use Routes */}
+          {/* Lure Routes */}
+          <Route path="/lures" element={<LureList />} />
+          <Route path="/lures/add" element={<LureForm />} />
+          <Route path="/lures/:id/edit" element={<EditLureForm />} />
+          
+          {/* Line Routes */}
+          <Route path="/lines" element={<LineList />} />
+          <Route path="/lines/add" element={<LineForm />} />
+          <Route path="/lines/:id/edit" element={<EditLineForm />} />
+
+          {/* Sinker Routes */}
+          <Route path="/sinkers" element={<SinkerList />} />
+          <Route path="/sinkers/add" element={<SinkerForm />} />
+          <Route path="/sinkers/:id/edit" element={<EditSinkerForm />} />
+
+          {/* Auth Routes */}
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/signin" element={<SignIn />} />
+
+          {/* Home or 404 */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </div>
     </Router>
   );

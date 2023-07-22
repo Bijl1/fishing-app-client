@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getLureById, updateLure } from '../api';
+import { getLureById, updateLure } from '../api/api';
 
 const EditLureForm = () => {
   const { id } = useParams();
