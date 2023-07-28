@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom'; 
+import {Routes, Route, Link } from 'react-router-dom'; // Corrected import statement
 import LureList from './components/LureList';
 import LineList from './components/LineList';
 import SinkerList from './components/SinkerList';
@@ -18,7 +18,6 @@ const NotFound = () => {
 
 const App = () => {
   return (
-    <Router>
       <div>
         <h1>Fishing App</h1>
         <nav>
@@ -43,7 +42,8 @@ const App = () => {
             </li>
           </ul>
         </nav>
-        <Routes> {/* Updated to use Routes */}
+    <Routes>
+        <Route> {/* Corrected to use Route */}
           {/* Lure Routes */}
           <Route path="/lures" element={<LureList />} />
           <Route path="/lures/add" element={<LureForm />} />
@@ -65,9 +65,9 @@ const App = () => {
 
           {/* Home or 404 */}
           <Route path="*" element={<NotFound />} />
-        </Routes>
+        </Route>
+    </Routes>
       </div>
-    </Router>
   );
 };
 
