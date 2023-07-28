@@ -24,6 +24,15 @@ export const getLures = async () => {
   }
 };
 
+export const getLureById = async (id) => {
+  try {
+    const response = await api.get(`/lures/${id}`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const deleteLure = async (id) => {
   try {
     await api.delete(`/lures/${id}`);
@@ -101,6 +110,15 @@ export const createSinker = async (sinkerData) => {
 export const getSinkers = async () => {
   try {
     const response = await api.get('/sinkers');
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getSinkerById = async (id) => {
+  try {
+    const response = await api.get(`/sinkers/${id}`);
     return response.data;
   } catch (error) {
     throw error;

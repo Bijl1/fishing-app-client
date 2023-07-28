@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom'; // Updated import statement
+import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom'; 
 import LureList from './components/LureList';
 import LineList from './components/LineList';
 import SinkerList from './components/SinkerList';
