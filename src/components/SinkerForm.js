@@ -25,7 +25,7 @@ const SinkerForm = () => {
 
   return (
     <div>
-      <h2>Add Sinker</h2>
+      <h2>Add Sinker</h2> 
       <form onSubmit={handleSubmit}>
         <label>Type:</label>
         <input type="text" name="type" value={formData.type} onChange={handleChange} />
