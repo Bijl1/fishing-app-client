@@ -17,3 +17,9 @@ code {
   color: #fff;
   padding: 1rem;
 }
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
