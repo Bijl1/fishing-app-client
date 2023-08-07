@@ -12,3 +12,70 @@ code {
     monospace;
 }
               
+/* Reset default margin and padding for body */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Set a default font-family and font-size */
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+}
+
+/* Apply styles to links */
+a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Set styles for headings */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: bold;
+}
+
+/* Apply styles for buttons */
+button {
+  cursor: pointer;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+/* Set a default background color for the app */
+#root {
+  background-color: #f0f0f0;
+}
+
+/* Global Styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* Header Styles */
+header {
+  background-color: #007bff;
+  padding: 1rem;
+  color: #fff;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+}
+
+/* Navigation Styles */
+nav {
+  background-color: #333;
+}
+
