@@ -149,3 +149,12 @@ footer {
   text-align: center;
 }
 
+/* Media Query for Mobile Devices */
+@media (max-width: 600px) {
+  nav ul {
+    flex-direction: column;
+  }
+  nav li {
+    margin: 0.5rem 0;
+  }
+}
