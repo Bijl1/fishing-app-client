@@ -100,3 +100,16 @@ nav a {
 nav a:hover {
   background-color: #555;
 }
+
+/* Main Content Styles */
+main {
+  padding: 1rem;
+}
+
+/* Form Styles */
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 0 auto;
+}
