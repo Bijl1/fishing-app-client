@@ -1,13 +1,27 @@
 import axios from 'axios';
+import { getLocalStorageToken } from '../utils/localStorageUtils';
 
 const api = axios.create({
-  baseURL: 'http://host:4200',
+  baseURL: 'http://localhost:4200',
+  headers: {
+    withCredentials: true,
+    Authorization: `Bearer ${getLocalStorageToken()}`
+  }
 });
 
-// Lure API Calls
+
+  //                      call the above created function that should return the token from local storage
+  //    
+// this should be done in Client side auth after signin to store token,
+// on every api call to get and pass the token
+// savy!? 
+
+// @todo - get token  from storage function here to return token from localstorage.
+// Lure API
 
 export const createLure = async (lureData) => {
   try {
+    console.log({lureData})
     const response = await api.post('/lures', lureData);
     return response.data;
   } catch (error) {
@@ -146,18 +160,20 @@ export const updateSinker = async (id, sinkerData) => {
 
 export const signUp = async (userData) => {
   try {
-    const response = await api.post('/signup', userData);
+    const response = await api.post('auth/signup', userData);
     return response.data;
   } catch (error) {
+    console.log({error});
     throw error;
   }
 };
 
 export const signIn = async (userData) => {
   try {
-    const response = await api.post('/signin', userData);
+    const response = await api.post('auth/signin', userData);
     return response.data;
   } catch (error) {
+    console.log({error})
     throw error;
   }
 };

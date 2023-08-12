@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { signIn } from '../api/api';
+import { saveTokenToLocal } from '../utils/localStorageUtils';
 
 const SignIn = () => {
   const [formData, setFormData] = useState({
@@ -15,7 +16,14 @@ const SignIn = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await signIn(formData);
+      console.log({formData})
+      const res = await signIn(formData);
+      // @todo - save your token to storage *******
+      if (res.token) {
+        saveTokenToLocal(res.token);
+      }
+
+      console.log({res});
       // Handle success, redirect to the appropriate page, etc.
     } catch (error) {
       console.error('Error signing in:', error);

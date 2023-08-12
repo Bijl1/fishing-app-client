@@ -1,5 +1,5 @@
 import React from 'react';
-import {Routes, Route, Link } from 'react-router-dom'; // Corrected import statement
+import { Routes, Route, Link } from 'react-router-dom';
 import LureList from './components/LureList';
 import LineList from './components/LineList';
 import SinkerList from './components/SinkerList';
@@ -11,6 +11,7 @@ import EditLineForm from './components/EditLineForm';
 import EditSinkerForm from './components/EditSinkerForm';
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
+import Home from './components/Home';
 
 const NotFound = () => {
   return <h2>404 Not Found</h2>;
@@ -18,57 +19,60 @@ const NotFound = () => {
 
 const App = () => {
   return (
-      <div>
-        <h1>Fishing App</h1>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/lures">Lures</Link>
-            </li>
-            <li>
-              <Link to="/lines">Lines</Link>
-            </li>
-            <li>
-              <Link to="/sinkers">Sinkers</Link>
-            </li>
-            <li>
-              <Link to="/signup">Sign Up</Link>
-            </li>
-            <li>
-              <Link to="/signin">Sign In</Link>
-            </li>
-          </ul>
-        </nav>
-    <Routes>
-        <Route> {/* Corrected to use Route */}
-          {/* Lure Routes */}
-          <Route path="/lures" element={<LureList />} />
-          <Route path="/lures/add" element={<LureForm />} />
-          <Route path="/lures/:id/edit" element={<EditLureForm />} />
-          
-          {/* Line Routes */}
-          <Route path="/lines" element={<LineList />} />
-          <Route path="/lines/add" element={<LineForm />} />
-          <Route path="/lines/:id/edit" element={<EditLineForm />} />
+    <div>
+      <h1>Fishing App</h1>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/lures">Lures</Link>
+          </li>
+          <li>
+            <Link to="/lines">Lines</Link>
+          </li>
+          <li>
+            <Link to="/sinkers">Sinkers</Link>
+          </li>
+          <li>
+            <Link to="/signup">Sign Up</Link>
+          </li>
+          <li>
+            <Link to="/signin">Sign In</Link>
+          </li>
+        </ul>
+      </nav>
+      <Routes>
+        {/* Home Route */}
+        <Route path="/" element={<Home />} />
 
-          {/* Sinker Routes */}
-          <Route path="/sinkers" element={<SinkerList />} />
-          <Route path="/sinkers/add" element={<SinkerForm />} />
-          <Route path="/sinkers/:id/edit" element={<EditSinkerForm />} />
+        {/* Lure Routes */}
+        <Route path="/lures" element={<LureList />} />
+        <Route path="/lures/add" element={<LureForm />} />
+        <Route path="/lures/:id/edit" element={<EditLureForm />} />
 
-          {/* Auth Routes */}
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/signin" element={<SignIn />} />
+        {/* Line Routes */}
+        <Route path="/lines" element={<LineList />} />
+        <Route path="/lines/add" element={<LineForm />} />
+        <Route path="/lines/:id/edit" element={<EditLineForm />} />
 
-          {/* Home or 404 */}
-          <Route path="*" element={<NotFound />} />
-        </Route>
-    </Routes>
-      </div>
+        {/* Sinker Routes */}
+        <Route path="/sinkers" element={<SinkerList />} />
+        <Route path="/sinkers/add" element={<SinkerForm />} />
+        <Route path="/sinkers/:id/edit" element={<EditSinkerForm />} />
+
+        {/* Auth Routes */}
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/signin" element={<SignIn />} />
+
+        {/* 404 Route */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </div>
   );
 };
+
+
 
 export default App;

@@ -6,9 +6,11 @@ import { createLure } from '../api/api';
 const LureForm = () => {
     const [formData, setFormData] = useState({
       name: '',
-      lureType: '',
+      lureType: 'TopWater',
       bestUsedFor: '',
     });
+
+    const lureTypes = ['TopWater', 'fly', 'silver'];
   
     const handleChange = (e) => {
       const { name, value } = e.target;
@@ -33,7 +35,11 @@ const LureForm = () => {
           <label>Name:</label>
           <input type="text" name="name" value={formData.name} onChange={handleChange} />
           <label>Lure Type:</label>
-          <input type="text" name="lureType" value={formData.lureType} onChange={handleChange} />
+          <select name="lureType" id="lures" value={formData.lureType} onChange={(e) => handleChange(e)}>
+            {lureTypes.map((lure, i) => <option key={i} value={lure}>{lure}</option>)}
+          </select>
+          {/* make this input a select with options. The options are set above  lureTypes */}
+          {/* <input type="text" name="lureType" value={formData.lureType} onChange={handleChange} /> */}
           <label>Best Used For:</label>
           <input type="text" name="bestUsedFor" value={formData.bestUsedFor} onChange={handleChange} />
           <button type="submit">Add Lure</button>

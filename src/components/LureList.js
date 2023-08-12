@@ -4,17 +4,20 @@ import { getLures, deleteLure } from '../api/api';
 
 const LureList = () => {
     const [lures, setLures] = useState([]);
-  
+    
+    const fetchLures = async () => {
+      try {
+        const response = await getLures();
+        console.log({response, lures})
+        setLures(response);
+
+        console.log({luresAfterSet: lures})
+      } catch (error) {
+        console.error('Error fetching lures:', error);
+      }
+    };
+
     useEffect(() => {
-      const fetchLures = async () => {
-        try {
-          const response = await getLures();
-          setLures(response.data);
-        } catch (error) {
-          console.error('Error fetching lures:', error);
-        }
-      };
-  
       fetchLures();
     }, []);
   

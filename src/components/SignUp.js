@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import { signUp } from '../api/api';
+import { useNavigate } from 'react-router-dom';
+import { saveTokenToLocal } from '../utils/localStorageUtils';
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -15,8 +19,16 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await signUp(formData);
+      const response = await signUp(formData);
+
+      // Save the token to local storage
+      if (response.token) {
+        saveTokenToLocal(response.token);
+      }
+
       // Handle success, redirect to the appropriate page, etc.
+      console.log("You Signed Up!!!!!!!!");
+      navigate('/signin');
     } catch (error) {
       console.error('Error signing up:', error);
       // Handle error, show error message, etc.
