@@ -37,7 +37,7 @@ const EditLureForm = () => {
       console.error('Error submitting form:', error);
       // Handle error, show error message, etc.
     }
-  };
+  }; 
 
   return (
     <div>
