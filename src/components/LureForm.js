@@ -10,7 +10,7 @@ const LureForm = () => {
       bestUsedFor: '',
     });
 
-    const lureTypes = ['TopWater', 'fly', 'silver'];
+    const lureTypes = ['Topwater', 'Middle', 'Bottom'];
   
     const handleChange = (e) => {
       const { name, value } = e.target;

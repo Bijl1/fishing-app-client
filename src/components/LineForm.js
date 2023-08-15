@@ -3,6 +3,7 @@ import { createLine } from '../api/api';
 
 const LineForm = () => {
   const [formData, setFormData] = useState({
+    name: '',         // Adding a name field
     tencelStr: '',
     gauge: '',
     knotType: '',
@@ -28,6 +29,8 @@ const LineForm = () => {
     <div>
       <h2>Add Line</h2>
       <form onSubmit={handleSubmit}>
+        <label>Name:</label>
+        <input type="text" name="name" value={formData.name} onChange={handleChange} /> {/* New input field */}
         <label>Tencel Strength:</label>
         <input type="text" name="tencelStr" value={formData.tencelStr} onChange={handleChange} />
         <label>Gauge:</label>
@@ -41,4 +44,3 @@ const LineForm = () => {
 };
 
 export default LineForm;
-       

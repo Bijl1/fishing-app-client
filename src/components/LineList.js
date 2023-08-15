@@ -4,14 +4,17 @@ import { getLines, deleteLine } from '../api/api';
 
 const LineList = () => {
   const [lines, setLines] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchLines = async () => {
       try {
         const response = await getLines();
         setLines(response.data);
+        setIsLoading(false);
       } catch (error) {
         console.error('Error fetching lines:', error);
+        setIsLoading(false);
       }
     };
 
@@ -30,16 +33,26 @@ const LineList = () => {
   return (
     <div>
       <h2>Line List</h2>
-      <ul>
-        {lines.map((line) => (
-          <li key={line._id}>
-            {line.tencelStr} - {line.gauge} - {line.knotType}
-            <button onClick={() => handleDelete(line._id)}>Delete</button>
-            <Link to={`/lines/${line._id}/edit`}>Edit</Link>
-          </li>
-        ))}
-      </ul>
-      <Link to="/lines/add">Add Line</Link>
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <>
+          {lines && lines.length > 0 ? (
+            <ul>
+              {lines.map((line) => (
+                <li key={line._id}>
+                  {line.name} - {line.tencelStr} - {line.gauge} - {line.knotType}
+                  <button onClick={() => handleDelete(line._id)}>Delete</button>
+                  <Link to={`/lines/${line._id}/edit`}>Edit</Link>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>No lines available.</p>
+          )}
+          <Link to="/lines/add">Add Line</Link>
+        </>
+      )}
     </div>
   );
 };
