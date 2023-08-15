@@ -54,5 +54,5 @@ const EditLureForm = () => {
     </div>
   );
 };
- 
+  
 export default EditLureForm;
