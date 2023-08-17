@@ -3,14 +3,15 @@ import { Link } from 'react-router-dom';
 import { getSinkers, deleteSinker } from '../api/api';
 
 const SinkerList = () => {
-  const [sinkers, setSinkers] = useState([]);
+  const [sinkers, setSinkers] = useState([]); // Initialize with an empty array
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchSinkers = async () => {
       try {
         const response = await getSinkers();
-        setSinkers(response.data);
+        console.log('API response:', response.data); // Log the API response
+        setSinkers(response.data); // Set the data from the API response
         setLoading(false);
       } catch (error) {
         console.error('Error fetching sinkers:', error);
@@ -28,6 +29,8 @@ const SinkerList = () => {
       console.error('Error deleting sinker:', error);
     }
   };
+
+  console.log('Sinkers state:', sinkers); // Log the sinkers state
 
   return (
     <div>

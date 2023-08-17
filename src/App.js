@@ -11,7 +11,7 @@ import EditLineForm from './components/EditLineForm';
 import EditSinkerForm from './components/EditSinkerForm';
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
-import Home from './components/Home';
+import Home from './components/Home';  
 
 const NotFound = () => {
   return <h2>404 Not Found</h2>;
