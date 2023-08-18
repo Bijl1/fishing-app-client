@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { signIn } from '../api/api';
+import { signIn, verifyToken } from '../api/api'; // Import the verifyToken function
 import { saveTokenToLocal } from '../utils/localStorageUtils';
 
 const SignIn = () => {
@@ -7,6 +7,8 @@ const SignIn = () => {
     email: '',
     password: '',
   });
+
+  const [user, setUser] = useState(null); // State to store user data
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -16,18 +18,20 @@ const SignIn = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log({formData})
+      console.log({ formData });
       const res = await signIn(formData);
-      // @todo - save your token to storage *******
       if (res.token) {
         saveTokenToLocal(res.token);
+
+      /** @todo add a call to the verify route to get the user dat and set the user in the state with that response yes.*/ 
+      const userData = await verifyToken();
+      console.log({userData});
+        setUser(userData);
       }
 
-      console.log({res});
-      // Handle success, redirect to the appropriate page, etc.
+      console.log({ res });
     } catch (error) {
       console.error('Error signing in:', error);
-      // Handle error, show error message, etc.
     }
   };
 
@@ -41,6 +45,13 @@ const SignIn = () => {
         <input type="password" name="password" value={formData.password} onChange={handleChange} />
         <button type="submit">Sign In</button>
       </form>
+
+      {user && (
+        <div>
+          <h3>Welcome, {user.email}!</h3>
+          {/* Render user data */}
+        </div>
+      )}
     </div>
   );
 };
