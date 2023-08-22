@@ -6,7 +6,7 @@ import { createLure } from '../api/api';
 const LureForm = () => {
     const [formData, setFormData] = useState({
       name: '',
-      lureType: 'TopWater',
+      lureType: 'Topwater',
       bestUsedFor: '',
     });
 
