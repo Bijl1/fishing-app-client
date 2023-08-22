@@ -115,6 +115,7 @@ export const updateLine = async (id, lineData) => {
 export const createSinker = async (sinkerData) => {
   try {
     const response = await api.post('/sinkers', sinkerData);
+    console.log({sinkerCreate: response})
     return response.data;
   } catch (error) {
     throw error;

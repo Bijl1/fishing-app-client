@@ -11,9 +11,9 @@ const SinkerList = () => {
       try {
         const response = await getSinkers();
         console.log('API response:', response);
-        if (response && response.data) {
-          console.log('Setting sinkers:', response.data);
-          setSinkers(response.data);
+        /** @todo follow this example for lures and lines to display info. the response.data is already returned in the getSinkers method from /api/api file. no need to check for response.data only response*/ 
+        if (!!response) {
+          setSinkers(response);
         }
         setLoading(false);
       } catch (error) {
@@ -28,14 +28,11 @@ const SinkerList = () => {
   const handleDelete = async (id) => {
     try {
       await deleteSinker(id);
-      console.log('Deleted sinker with ID:', id);
       setSinkers((prevSinkers) => prevSinkers.filter((sinker) => sinker._id !== id));
     } catch (error) {
       console.error('Error deleting sinker:', error);
     }
   };
-
-  console.log('Sinkers state:', sinkers);
 
   return (
     <div>

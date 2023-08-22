@@ -14,8 +14,15 @@ const SinkerForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('adding sinker');
     try {
-      await createSinker(formData);
+      const newlyCreatedSinker = await createSinker(formData);
+      console.log({newlyCreatedSinker});
+
+      /** @todo navigate user back to sinker list after success, do same for lures and lines*/ 
+      if(!!newlyCreatedSinker._id) {
+        // navigate back to sinkers
+      }
       // Handle success, reset form, etc.
     } catch (error) {
       console.error('Error submitting form:', error);
