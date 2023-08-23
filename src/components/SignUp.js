@@ -18,6 +18,7 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('signing up', formData);
     try {
       const response = await signUp(formData);
 

@@ -161,6 +161,7 @@ export const updateSinker = async (id, sinkerData) => {
 // User API Calls
 
 export const signUp = async (userData) => {
+  console.log({creatingUser: userData})
   try {
     const response = await api.post('auth/signup', userData);
     return response.data;
@@ -171,11 +172,13 @@ export const signUp = async (userData) => {
 };
 
 export const signIn = async (userData) => {
+  console.log({signinUser: userData})
   try {
     const response = await api.post('auth/signin', userData);
+    console.log({userSignInRes: response});
     return response.data;
   } catch (error) {
-    console.log({error})
+    console.log({errorFromApiCall: error, api})
     throw error;
   }
 };

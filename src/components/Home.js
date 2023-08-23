@@ -1,10 +1,14 @@
 import React from 'react';
 
-const Home = () => {
+const Home = ({ user }) => {
   return (
     <div>
       <h2>Welcome to the Fishing App!</h2>
-      <p>This is the home page of the app.</p>
+      {user ? (
+        <p>This is the home page of the app. You are signed in as {user.email}.</p>
+      ) : (
+        <p>This is the home page of the app.</p>
+      )}
     </div>
   );
 };
