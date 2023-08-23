@@ -69,6 +69,7 @@ export const updateLure = async (id, lureData) => {
 export const createLine = async (lineData) => {
   try {
     const response = await api.post('/lines', lineData);
+    console.log({createLine: response})
     return response.data;
   } catch (error) {
     throw error;

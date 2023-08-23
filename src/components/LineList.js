@@ -10,7 +10,9 @@ const LineList = () => {
     const fetchLines = async () => {
       try {
         const response = await getLines();
-        setLines(response.data);
+        console.log('API response:', response);
+        if (!!response)
+        setLines(response);
         setIsLoading(false);
       } catch (error) {
         console.error('Error fetching lines:', error);

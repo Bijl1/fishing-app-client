@@ -16,8 +16,13 @@ const LineForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('adding line');
     try {
-      await createLine(formData);
+      const newlyCreatedLine = await createLine(formData);
+      console.log({newlyCreatedLine});
+      if(!!newlyCreatedLine._id) {
+
+      }
       // Handle success, reset form, etc.
     } catch (error) {
       console.error('Error submitting form:', error);
