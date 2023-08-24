@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
 import { signIn, verifyToken } from '../api/api';
 import { saveTokenToLocal } from '../utils/localStorageUtils';
+import { useNavigate } from 'react-router-dom';
 
 const SignIn = () => {
+
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
 
   const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,11 +27,11 @@ const SignIn = () => {
         saveTokenToLocal(res.token);
 
         const userData = await verifyToken();
-        console.log({userData});
-
+        console.log({ userData });
         setUser(userData);
-        // navigate to home '/'
       }
+      console.log("You Signed In!!!!!!!!");
+      navigate('/'); 
     } catch (error) {
       console.error('Error signing in:', error);
     }

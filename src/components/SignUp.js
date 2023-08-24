@@ -29,7 +29,7 @@ const SignUp = () => {
 
       // Handle success, redirect to the appropriate page, etc.
       console.log("You Signed Up!!!!!!!!");
-      navigate('/signin');
+      navigate('/');
     } catch (error) {
       console.error('Error signing up:', error);
       // Handle error, show error message, etc.
