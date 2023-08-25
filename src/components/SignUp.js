@@ -27,12 +27,10 @@ const SignUp = () => {
         saveTokenToLocal(response.token);
       }
 
-      // Handle success, redirect to the appropriate page, etc.
       console.log("You Signed Up!!!!!!!!");
       navigate('/');
     } catch (error) {
       console.error('Error signing up:', error);
-      // Handle error, show error message, etc.
     }
   };
 

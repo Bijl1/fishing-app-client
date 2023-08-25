@@ -3,7 +3,7 @@ import { createLine } from '../api/api';
 
 const LineForm = () => {
   const [formData, setFormData] = useState({
-    name: '',         // Adding a name field
+    name: '',         
     tencelStr: '',
     gauge: '',
     knotType: '',
@@ -23,10 +23,8 @@ const LineForm = () => {
       if(!!newlyCreatedLine._id) {
 
       }
-      // Handle success, reset form, etc.
     } catch (error) {
       console.error('Error submitting form:', error);
-      // Handle error, show error message, etc.
     }
   };
 

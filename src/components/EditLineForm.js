@@ -32,10 +32,8 @@ const EditLineForm = () => {
     e.preventDefault();
     try {
       await updateLine(id, formData);
-      // Handle success, redirect, etc.
     } catch (error) {
       console.error('Error submitting form:', error);
-      // Handle error, show error message, etc.
     }
   };
 

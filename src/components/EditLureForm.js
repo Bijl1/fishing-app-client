@@ -32,10 +32,8 @@ const EditLureForm = () => {
     e.preventDefault();
     try {
       await updateLure(id, formData);
-      // Handle success, redirect, etc.
     } catch (error) {
       console.error('Error submitting form:', error);
-      // Handle error, show error message, etc.
     }
   }; 
 

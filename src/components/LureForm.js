@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { createLure } from '../api/api';
 
-// ... (import statements)
 
 const LureForm = () => {
     const [formData, setFormData] = useState({
@@ -21,10 +20,8 @@ const LureForm = () => {
       e.preventDefault();
       try {
         await createLure(formData);
-        // Handle success, reset form, etc.
       } catch (error) {
         console.error('Error submitting form:', error);
-        // Handle error, show error message, etc.
       }
     };
   

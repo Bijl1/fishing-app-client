@@ -11,7 +11,6 @@ const SinkerList = () => {
       try {
         const response = await getSinkers();
         console.log('API response:', response);
-        /** @todo follow this example for lures and lines to display info. the response.data is already returned in the getSinkers method from /api/api file. no need to check for response.data only response*/ 
         if (!!response) {
           setSinkers(response);
         }
