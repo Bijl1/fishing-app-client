@@ -14,7 +14,13 @@ const EditLineForm = () => {
     const fetchLine = async () => {
       try {
         const response = await getLineById(id);
-        setFormData(response.data);
+        if (response.data) {
+          setFormData({
+            name: response.data.name || '',
+            type: response.data.type || '',
+            strength: response.data.strength || 0,
+          });
+        }
       } catch (error) {
         console.error('Error fetching line:', error);
       }

@@ -14,12 +14,18 @@ const EditLureForm = () => {
     const fetchLure = async () => {
       try {
         const response = await getLureById(id);
-        setFormData(response.data);
+        if (response.data) {
+          setFormData({
+            name: response.data.name || '',
+            lureType: response.data.lureType || '',
+            bestUsedFor: response.data.bestUsedFor || '',
+          });
+        }
       } catch (error) {
         console.error('Error fetching lure:', error);
       }
     };
-
+  
     fetchLure();
   }, [id]);
 

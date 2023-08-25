@@ -13,7 +13,13 @@ const EditSinkerForm = () => {
     const fetchSinker = async () => {
       try {
         const response = await getSinkerById(id);
-        setFormData(response.data);
+        if (response.data) {
+          setFormData({
+            name: response.data.name || '',
+            weight: response.data.weight || 0,
+            material: response.data.material || '',
+          });
+        }
       } catch (error) {
         console.error('Error fetching sinker:', error);
       }

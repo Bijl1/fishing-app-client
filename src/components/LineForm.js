@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { createLine } from '../api/api';
 
 const LineForm = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',         
     tencelStr: '',
@@ -20,8 +22,8 @@ const LineForm = () => {
     try {
       const newlyCreatedLine = await createLine(formData);
       console.log({newlyCreatedLine});
-      if(!!newlyCreatedLine._id) {
-
+      if (newlyCreatedLine._id) {
+        navigate('/lines');
       }
     } catch (error) {
       console.error('Error submitting form:', error);
@@ -33,7 +35,7 @@ const LineForm = () => {
       <h2>Add Line</h2>
       <form onSubmit={handleSubmit}>
         <label>Name:</label>
-        <input type="text" name="name" value={formData.name} onChange={handleChange} /> {/* New input field */}
+        <input type="text" name="name" value={formData.name} onChange={handleChange} />
         <label>Tencel Strength:</label>
         <input type="text" name="tencelStr" value={formData.tencelStr} onChange={handleChange} />
         <label>Gauge:</label>
