@@ -20,7 +20,7 @@ const NotFound = () => {
 const App = () => {
   return (
     <div>
-      <h1>Fishing App</h1>   
+      <h1>Fishing Development App</h1>   
       <nav>
         <ul>
           <li>
