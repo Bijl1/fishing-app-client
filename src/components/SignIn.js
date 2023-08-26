@@ -23,8 +23,9 @@ const SignIn = () => {
     e.preventDefault();
     try {
       const res = await signIn(formData);
-      if (res.token) {
-        saveTokenToLocal(res.token);
+      if (!!res) {
+        console.log({res})
+        saveTokenToLocal(res.password);
 
         const userData = await verifyToken();
         console.log({ userData });
