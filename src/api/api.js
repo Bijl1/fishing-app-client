@@ -2,7 +2,7 @@ import axios from 'axios';
 import { getLocalStorageToken } from '../utils/localStorageUtils';
 
 const api = axios.create({
-  baseURL: 'http://localhost:4200',
+  baseURL: process.env.REACT_APP_SERVER_URL || 'http://localhost:4200',
   headers: {
     withCredentials: true,
     Authorization: `Bearer ${getLocalStorageToken()}`
