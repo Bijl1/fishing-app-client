@@ -179,6 +179,7 @@ export const signIn = async (userData) => {
 export const verifyToken = async () => {
   try {
     const response = await api.get('/auth/verify');
+    console.log({verified: response});
     return response.data;
   } catch (error) {
     throw error;

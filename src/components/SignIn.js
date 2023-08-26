@@ -11,7 +11,7 @@ const SignIn = () => {
   });
 
   const [user, setUser] = useState(null);
-  const navigate = useNavigate();
+  const navigate = useNavigate('/signin');
 
 
   const handleChange = (e) => {
@@ -29,9 +29,15 @@ const SignIn = () => {
         const userData = await verifyToken();
         console.log({ userData });
         setUser(userData);
+
+        if(!!userData) {
+          console.log("You Signed In!!!!!!!!");
+          navigate('/'); 
+        } else {
+          console.log("No User Data!");
+          navigate('/signin'); 
+        }
       }
-      console.log("You Signed In!!!!!!!!");
-      navigate('/'); 
     } catch (error) {
       console.error('Error signing in:', error);
     }

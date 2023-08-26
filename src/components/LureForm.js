@@ -20,9 +20,13 @@ const LureForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await createLure(formData);
+      const createdLure = await createLure(formData);
       // After successful submission, navigate to the homepage
-      navigate('/lures');
+      if(createdLure) {
+        navigate('/lures');
+      } else {
+        console.log('Error Creating Lure!', createdLure);
+      }
     } catch (error) {
       console.error('Error submitting form:', error);
     }
